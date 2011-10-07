@@ -20,10 +20,17 @@ BuildRequires:	pkgconfig(libftdi) pkgconfig(libconfuse)
 Telldus Core is the driver and tools for controlling a Telldus Technologies
 TellStick. It does not containing any GUI tools which makes it suitable for
 server use.
+This package contains the tools.
 
 %package -n	%{libname}
 Summary:	Library for telldus-core
 Group:		System/Libraries
+
+%description -n	%{libname}
+Telldus Core is the driver and tools for controlling a Telldus Technologies
+TellStick. It does not containing any GUI tools which makes it suitable for
+server use.
+This package contains the library.
 
 %package -n	%{devname}
 Summary:	Development files for developing programs against telldus-core
@@ -31,6 +38,11 @@ Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 
 %description -n	%{devname}
+Telldus Core is the driver and tools for controlling a Telldus Technologies
+TellStick. It does not containing any GUI tools which makes it suitable for
+server use.
+This package contains development files for creating applications using
+Telldus Core.
 
 %prep
 %setup -q
