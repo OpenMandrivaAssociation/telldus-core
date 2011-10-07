@@ -52,7 +52,9 @@ Telldus Core.
 %patch2 -p1 -b .deduser~
 
 %build
-%cmake -DGENERATE_MAN:BOOL=ON
+%cmake
+# something breaks on buildsystem, so just disable it for now...
+# -DGENERATE_MAN:BOOL=ON
 # parallel build broken :/
 make
 
@@ -77,9 +79,11 @@ install -m755 %{SOURCE1} -D %{buildroot}%{_initrddir}/telldusd
 %{_bindir}/tdtool
 %{_sbindir}/tdadmin
 %{_sbindir}/telldusd
+%if 0
 %{_mandir}/man1/tdtool.1*
 %{_mandir}/man1/tdadmin.1*
 %{_mandir}/man1/telldusd.1*
+%endif
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/helpers/
 %{_datadir}/%{name}/helpers/udev.sh
