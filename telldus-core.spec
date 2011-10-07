@@ -10,7 +10,7 @@ Patch0:		telldus-core-2.1.0-get-ftdi-includedir-from-pkgconfig.patch
 Patch1:		telldus-core-2.1.0-fix-libdir-path,patch
 Patch2:		telldus-core-2.1.0-run-under-dedicated-user.patch
 URL:		http://developer.telldus.se
-BuildRequires:	pkgconfig(libftdi) pkgconfig(libconfuse)
+BuildRequires:	pkgconfig(libftdi) pkgconfig(libconfuse) cmake
 
 %define	major	2
 %define	libname	%mklibname %{name} %{major}
