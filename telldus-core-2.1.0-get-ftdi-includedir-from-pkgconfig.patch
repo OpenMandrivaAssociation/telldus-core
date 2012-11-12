@@ -1,0 +1,14 @@
+--- telldus-core-2.1.0/service/CMakeLists.txt.ftdi_inc~	2011-10-06 21:50:18.855692872 +0200
++++ telldus-core-2.1.0/service/CMakeLists.txt	2011-10-06 21:50:21.988694433 +0200
+@@ -159,6 +159,11 @@ IF (FTDI_ENGINE STREQUAL "ftd2xx")
+ 	LIST(APPEND telldus-service_LIBRARIES ${FTD2XX_LIBRARY})
+ ELSE (FTDI_ENGINE STREQUAL "ftd2xx")
+ 	FIND_LIBRARY(FTDI_LIBRARY ftdi)
++	IF (NOT WIN32)
++		INCLUDE(FindPkgConfig)
++		PKG_SEARCH_MODULE(FTDI libftdi)
++		SET( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I${FTDI_INCLUDEDIR}" )
++	ENDIF (NOT WIN32)
+ 	ADD_DEFINITIONS( -DLIBFTDI )
+ 	LIST(APPEND telldus-service_SRCS TellStick_libftdi.cpp )
+ 	LIST(APPEND telldus-service_LIBRARIES ${FTDI_LIBRARY})
